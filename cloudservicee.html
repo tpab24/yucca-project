@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Solutions - Yucca Informatique</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f7ff 0%, #5f8dd3 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, rgba(117, 177, 207, 0.8) 0%, rgba(19, 54, 122, 0.9) 100%);
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 5%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .decorative-line {
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #87CEEB);
+            margin: 10px auto 30px;
+            border-radius: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .content-box {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 20px 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-box h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: #f9fbff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3a6ea5;
+        }
+        
+        .service-card p {
+            margin-bottom: 20px;
+        }
+        
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .benefit-item {
+            width: calc(50% - 20px);
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .benefit-icon {
+            background: #e6f0ff;
+            color: #3a6ea5;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h3 {
+            margin-bottom: 10px;
+            color: #3a6ea5;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            box-shadow: 0 6px 18px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+        .cloud-providers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .provider-logo {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #3a6ea5;
+            width: 150px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .tech-item {
+            background: #f0f7ff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #3a6ea5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                border-radius: 25px;
+                padding: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-box {
+                padding: 30px 20px;
+            }
+            
+            .benefit-item {
+                width: 100%;
+            }
+        }
+        footer {
+            background: linear-gradient(90deg, rgba(135, 206, 235, 0.8), rgba(23, 55, 117, 0.9));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">🌵</span>
+                <span>Yucca</span>
+            </div>
+            <div class="menu">
+                <a href="#services">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="#team">Team</a>
+            </div>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Cloud Solutions</h1>
+        <div class="decorative-line"></div>
+        <p>Scale your business with secure, flexible, and cost-effective cloud infrastructure designed for your specific needs.</p>
+    </section>
+    <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Request Consultation</a>
+        <a href="#process" class="btn btn-outline">View Our Process</a>
+    </div>
+    
+    <section class="content-box">
+        <h2>Enterprise-Grade Cloud Services</h2>
+        <p>At Yucca Informatique, we deliver comprehensive cloud solutions that help organizations modernize their infrastructure, increase operational efficiency, and accelerate innovation. Our cloud experts design, implement, and manage cloud environments that align with your business objectives.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Cloud Migration</h3>
+                <p>Seamlessly transition your applications and data to the cloud with our proven migration methodology that minimizes risk and downtime.</p>
+            </div>
+            <div class="service-card">
+                <h3>Cloud Infrastructure</h3>
+                <p>Design and implementation of scalable, secure, and highly available cloud infrastructure tailored to your workloads.</p>
+            </div>
+            <div class="service-card">
+                <h3>DevOps & CI/CD</h3>
+                <p>Streamline your software delivery process with automated pipelines and modern DevOps practices in the cloud.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-box">
+        <h2>Our Cloud Expertise</h2>
+        <p>We work with leading cloud providers to deliver the best solutions for your business:</p>
+        
+        <div class="cloud-providers">
+            <div class="provider-logo">AWS</div>
+            <div class="provider-logo">Microsoft Azure</div>
+            <div class="provider-logo">Google Cloud</div>
+            <div class="provider-logo">IBM Cloud</div>
+        </div>
+        
+        <p>Our certified cloud architects and engineers bring extensive experience in designing and implementing cloud solutions across various industries, from startups to enterprise organizations.</p>
+    </section>
+    
+    <section class="content-box">
+        <h2>Cloud Technologies We Use</h2>
+        <p>We leverage industry-leading technologies to build robust cloud solutions:</p>
+        
+        <div class="technologies">
+            <span class="tech-item">Kubernetes</span>
+            <span class="tech-item">Docker</span>
+            <span class="tech-item">Terraform</span>
+            <span class="tech-item">Ansible</span>
+            <span class="tech-item">Lambda</span>
+            <span class="tech-item">S3</span>
+            <span class="tech-item">EC2</span>
+            <span class="tech-item">Azure Functions</span>
+            <span class="tech-item">GCP App Engine</span>
+        </div>
+    </section>
+    
+    <section class="content-box">
+        <h2>Benefits of Our Cloud Solutions</h2>
+        
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-content">
+                    <h3>Cost Optimization</h3>
+                    <p>Reduce capital expenses and only pay for what you use with our optimized cloud architectures.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-content">
+                    <h3>Scalability</h3>
+                    <p>Easily scale resources up or down based on demand without infrastructure constraints.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🔒</div>
+                <div class="benefit-content">
+                    <h3>Enhanced Security</h3>
+                    <p>Implement best-in-class security measures and compliance controls for your cloud environment.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🚀</div>
+                <div class="benefit-content">
+                    <h3>Faster Time-to-Market</h3>
+                    <p>Accelerate product development and deployment with agile cloud infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-box">
+        <h2>Our Cloud Services</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Cloud Strategy & Consulting</h3>
+                <p>Expert guidance on cloud adoption, architecture design, and technology selection aligned with your business goals.</p>
+            </div>
+            <div class="service-card">
+                <h3>Cloud-Native Development</h3>
+                <p>Building applications specifically designed to leverage cloud capabilities for maximum performance and scalability.</p>
+            </div>
+            <div class="service-card">
+                <h3>Managed Cloud Services</h3>
+                <p>Ongoing monitoring, maintenance, and optimization of your cloud infrastructure for optimal performance.</p>
+            </div>
+            <div class="service-card">
+                <h3>Disaster Recovery</h3>
+                <p>Implement robust backup and disaster recovery solutions to ensure business continuity.</p>
+            </div>
+        </div>
+        
+    </section>
+    
+    <section class="content-box">
+        <h2>Trusted by Leading Companies</h2>
+        <!-- Company logos would go here -->
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Yucca Informatique</h3>
+                <p>We build high-quality software to power your business with innovative solutions tailored to your unique challenges.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="customsoft.html">Custom Software Development</a></li>
+                    <li><a href="#">Mobile Applications</a></li>
+                    <li><a href="webdev.html">Web Development</a></li>
+                    <li><a href="#">UI/UX Design</a></li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@yucca-info.com</li>
+                    <li>Phone: </li>
+                    <li>Address: </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Yucca Informatique. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
